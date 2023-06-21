@@ -1,0 +1,12 @@
+_kube_namespaces()
+{
+  local curr_arg;
+  curr_arg=
+  COMPREPLY=( -
+kube-system
+kube-public
+kube-node-lease
+default );
+}
+
+complete -F _kube_namespaces kubens kns
