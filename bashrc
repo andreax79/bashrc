@@ -88,7 +88,7 @@ fi
 source ~/.config/bash/git-prompt.sh
 
 export PS1=\
-'$(__git_ps1 "(%s)") '\
+'$(__git_ps1 "(%s) ")'\
 '$(kube_ps1)'\
 '${debian_chroot:+($debian_chroot)}'\
 '$([ \j -gt 0 ] && echo "(\[\033[00;31m\]jobs=\j\[\033[00m\]) ")'\
