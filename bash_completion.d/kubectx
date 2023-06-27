@@ -6,4 +6,6 @@ _kube_contexts()
 microk8s );
 }
 
-complete -F _kube_contexts kubectx kctx
+if [ "$HAS_KUBE" -eq "1" ]; then
+    complete -F _kube_contexts kubectx kctx
+fi
