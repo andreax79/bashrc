@@ -67,11 +67,14 @@ source ~/.config/bash/completion.sh
 source ~/.config/bash/aliases.sh
 
 # FZF -------------------------------------------------------------------------
+export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down --cycle'  # use tab to move cursor to next entry, cycle
+export FZF_DEFAULT_COMMAND='ag -l'
+export FZF_COMPLETION_AUTO_COMMON_PREFIX=true # completes the common prefix if it is also a match
+# export FZF_COMPLETION_AUTO_COMMON_PREFIX_PART=true # with the above variable, completes the common prefix even if it is not a match
 source ~/.config/bash/fzf.sh
 source ~/.config/bash/fzf-bash-completion.sh
 bind -x '"\t": fzf_bash_completion'
-export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down --cycle'  # use tab to move cursor to next entry, cycle
-export FZF_DEFAULT_COMMAND='ag -l'
+_fzf_bash_completion_loading_msg() { echo "${PS1@P}${READLINE_LINE}" | tail -n1; }
 
 # z ---------------------------------------------------------------------------
 source ~/.config/bash/z.sh
