@@ -77,6 +77,11 @@ fi
 # z ---------------------------------------------------------------------------
 source ~/.config/bash/z.sh
 
+# Node Version Manager  -------------------------------------------------------
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # Prompt ----------------------------------------------------------------------
 source ~/.config/bash/prompt.sh
 
@@ -84,3 +89,4 @@ source ~/.config/bash/prompt.sh
 if [ -f ~/.config/bash/local.sh ]; then
     source ~/.config/bash/local.sh
 fi
+
