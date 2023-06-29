@@ -45,8 +45,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Config ----------------------------------------------------------------------
-HAS_KUBE=1
-HAS_GIT=1
+source ~/.config/bash/default.sh
 if [ -f ~/.config/bash/config.sh ]; then
     source ~/.config/bash/config.sh
 fi
@@ -69,9 +68,11 @@ bind 'set bell-style none'
 source ~/.config/bash/aliases.sh
 
 # FZF -------------------------------------------------------------------------
-export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down --cycle'  # use tab to move cursor to next entry, cycle
-export FZF_DEFAULT_COMMAND='ag -l'
-source ~/.config/bash/fzf.sh
+if [ "$HAS_FZF" -eq "1" ]; then
+    export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down --cycle'  # use tab to move cursor to next entry, cycle
+    export FZF_DEFAULT_COMMAND='ag -l'
+    source ~/.config/bash/fzf.sh
+fi
 
 # z ---------------------------------------------------------------------------
 source ~/.config/bash/z.sh
