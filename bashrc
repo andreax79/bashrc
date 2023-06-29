@@ -91,11 +91,20 @@ if [ "$HAS_GIT" -eq "1" ]; then
 else
     __git_ps1() { echo; }
 fi
+
+PROMPT_COMMAND='RET=$?'
+
+function exit_status_ps1 {
+    if [ $RET -ne 0 ]; then
+        echo -en "(\033[00;31mexit=$RET\033[00m) "
+    fi
+}
+
 export PS1=\
 '$(__git_ps1 "(%s) ")'\
 '$(kube_ps1)'\
 '${debian_chroot:+($debian_chroot)}'\
-'$([ \j -gt 0 ] && echo "(\[\033[00;31m\]jobs=\j\[\033[00m\]) ")'\
+'$([ \j -gt 0 ] && echo "(\[\033[00;31m\]jobs=\j\[\033[00m\]) ")$(exit_status_ps1)'\
 '\[\033[00m\]\u@\h\[\033[00m\] \t\n'\
 '\[\033[01;34m\]\w\[\033[00m\]\$ '
 
