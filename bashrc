@@ -74,9 +74,6 @@ if [ "$HAS_FZF" -eq "1" ]; then
     source ~/.config/bash/fzf.sh
 fi
 
-# z ---------------------------------------------------------------------------
-source ~/.config/bash/z.sh
-
 # Node Version Manager  -------------------------------------------------------
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -85,8 +82,14 @@ export NVM_DIR="$HOME/.nvm"
 # Prompt ----------------------------------------------------------------------
 source ~/.config/bash/prompt.sh
 
+# zoxide/z --------------------------------------------------------------------
+if [ "$HAS_ZOXIDE" -eq "1" ]; then
+    eval "$(zoxide init bash)"
+else
+    source ~/.config/bash/z.sh
+fi
+
 # Local config ----------------------------------------------------------------
 if [ -f ~/.config/bash/local.sh ]; then
     source ~/.config/bash/local.sh
 fi
-
